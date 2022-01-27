@@ -1,19 +1,43 @@
 from PIL import Image, ImageDraw
-
+import cv2
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
-
 import random
 
-# Функция возвращающая маску предмета, рисует
+
+def find_contours():
+
+    img = cv2.imread('images/horseshoe.jpg')
+    img = cv2.resize(img, (img.shape[1] // 2, img.shape[0] // 2))
+    img_gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    cv2.imshow("result", img)
+    cv2.imshow("result gray", img_gray)
+    cv2.waitKey(0)
+
+
+
+# Функция возвращающая контуры маски предмета и
+# рисует их маски на чистом фоне с заполнением
 def get_img():
-    im = Image.new('1', (400, 400), color=0)
-    draw = ImageDraw.Draw(im)
-    for _ in range(random.randint(1, 4)):
-        draw.polygon([random.randint(10, im.size[0]-10) for x in range(8)], fill=1)
-    return np.array(im)
+
+    """ Возвращаем матрицу(растровое изображение)
+    элементы которого - это значения 0 либо 255"""
+
+    img_background = Image.new('1', (400, 400), color=0)
+    draw = ImageDraw.Draw(img_background)
+    img = plt.imread('images/horseshoe.jpg')
+    img = cv2.resize(img, (img.shape[1] // 2, img.shape[0] // 2))
+
+
+    # for _ in range(random.randint(1, 4)):
+    #     draw.polygon([random.randint(10, im.size[0]-10) for _ in range(8)], fill=1)
+
+    plt.imshow(img)
+    plt.show()
+    return np.array(img)
 
 
 if __name__ == '__main__':
-    pass
+    find_contours()
+
