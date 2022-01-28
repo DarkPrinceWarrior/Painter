@@ -10,8 +10,15 @@ def find_contours():
 
     img = cv2.imread('images/horseshoe.jpg')
     img = cv2.resize(img, (img.shape[1] // 2, img.shape[0] // 2))
-    img_gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    cv2.imshow("result", img)
+    img_gray = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+    # ret, thresh = cv2.threshold(img_gray, 180,255,0)
+    # cv2.imshow("result", thresh)
+    # contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+    # cv2.drawContours(img,contours,-1,(0,255,0), thickness=3)
+    #
+    #
+    #
+    # cv2.imshow("result", img)
     cv2.imshow("result gray", img_gray)
     cv2.waitKey(0)
 
