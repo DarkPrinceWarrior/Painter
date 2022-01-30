@@ -23,9 +23,3 @@ def find_contours():
             contList.append(i)
 
     return contList
-
-
-    # cv2.drawContours(img,contList,-1,(255,0,0), thickness=3)
-    # cv2.imshow("result", img)
-    # cv2.imshow("result gray", img_gray)
-    # cv2.waitKey(0)

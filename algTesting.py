@@ -1,6 +1,3 @@
-# Алгоритм прогоняется несколько раз
-# результаты записываются в датафрейм
-import numpy as np
 import pandas as pd
 
 from fill_item import count_n_plot
@@ -16,6 +13,8 @@ def testing(choice):
     df = pd.DataFrame(columns=['Steps', 'Area', 'Distance', 'Misses', 'Distance/Area'],
                       index=range(n_steps))
 
+    # Алгоритм прогоняется несколько раз
+    # результаты записываются в датафрейм
     for i in range(n_steps):
 
         if choice == "2":

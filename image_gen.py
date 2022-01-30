@@ -21,9 +21,6 @@ def get_img1(contours):
         conts.append(i[0])
     draw.polygon([(coords[0], coords[1]) for coords in conts], fill=1)
 
-    # plt.imshow(img_background2)
-    # plt.show()
-
     return np.array(img_background2)
 
 
@@ -44,10 +41,10 @@ def image_area_split1(img):
     for i in range(len(img) // 30):
         for j in range(len(img) // 30):
 
-            x1, y1 = 30 * i, 30 * (i + 1)
-            x2, y2 = 30 * j, 30 * (j + 1)
+            slice1X, slice1Y = 30 * i, 30 * (i + 1)
+            slice2X, slice2Y = 30 * j, 30 * (j + 1)
 
-            img1 = img[x1:y1, x2:y2]
+            img1 = img[slice1X:slice1Y, slice2X:slice2Y]
             if 1 in img1:
                 points =[]
                 for k in range(len(img1)):
@@ -58,8 +55,10 @@ def image_area_split1(img):
                 routes.extend(get_route(img1,
                                         points[random_num]["x"],
                                         points[random_num]["y"],
-                                        x1, x2))
+                                        slice1X, slice2X))
                 box_array[i][j] = 1
+
+    print(box_array)
 
     return routes
 
@@ -72,10 +71,10 @@ def image_area_split2(img):
     for i in range(len(img) // 30):
         for j in range(len(img) // 30):
 
-            x1, y1 = 30 * i, 30 * (i + 1)
-            x2, y2 = 30 * j, 30 * (j + 1)
+            slice1X, slice1Y = 30 * i, 30 * (i + 1)
+            slice2X, slice2Y = 30 * j, 30 * (j + 1)
 
-            img1 = img[x1:y1, x2:y2]
+            img1 = img[slice1X:slice1Y, slice2X:slice2Y]
             if 1 in img1:
                 points =[]
                 for k in range(len(img1)):
@@ -86,7 +85,8 @@ def image_area_split2(img):
                 routes.extend(get_route(img1,
                                         points[random_num]["x"],
                                         points[random_num]["y"],
-                                        x1, x2))
+                                        slice1X, slice2X))
                 box_array[i][j] = 1
 
+    print(box_array)
     return routes

@@ -1,4 +1,3 @@
-# Очень плохая функция генерирующая маршрут
 
 
 def get_route(im, x, y, offsetX, offsetY):
