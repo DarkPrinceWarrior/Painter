@@ -2,11 +2,11 @@ import pandas as pd
 
 from fill_item import count_n_plot
 from find_cont_coords import find_contours
-from image_gen import get_img1, image_area_split1, get_img2
+from image_gen import get_img, image_area_split
 from route_gen import get_route
 
 
-def testing(choice):
+def testing(option):
 
     n_steps = 10
 
@@ -15,16 +15,16 @@ def testing(choice):
 
     # Алгоритм прогоняется несколько раз
     # результаты записываются в датафрейм
+    coord_contours = list()
     for i in range(n_steps):
 
-        if choice == "2":
-            im = get_img2()
-        else:
+        if option == 1:
             coord_contours = find_contours()
-            im = get_img1(coord_contours)
 
-        route = image_area_split1(im.copy())
-        sec_arr, distance = count_n_plot(im, route,1, plot=False)
+        im = get_img(coord_contours, option)
+
+        route, box_route = image_area_split(im.copy())
+        sec_arr, distance = count_n_plot(im, route, option, plot=False)
         df.iloc[i]['Steps'] = len(route)
         df.iloc[i]['Area'] = im.sum()
         df.iloc[i]['Distance'] = distance

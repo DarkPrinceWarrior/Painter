@@ -5,7 +5,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 
 
-def count_n_plot(im_arr, route,choice, plot=True):
+def count_n_plot(im_arr, route,option, plot=True):
     # Проверка и визуализация результата
     sec_mask = Image.new('1', (600, 600), color=0)
     # Создается второе изображение аналогичного размера
@@ -17,7 +17,7 @@ def count_n_plot(im_arr, route,choice, plot=True):
         distance += ((prev_coords[0] - step['x']) ** 2 + (prev_coords[1] - step['y']) ** 2) ** 0.5
         prev_coords = step['x'], step['y']
         # Если в маршруте указан статус 1 точка в текущих координатах закрашивается
-        if choice == "2":
+        if option == 2:
             draw.line((prev_coords[1], prev_coords[0], step['y'], step['x']), fill=1)
         else:
             draw.point(xy=(step['y'], step['x']), fill=1)
