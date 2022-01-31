@@ -1,4 +1,3 @@
 # Painter
-Uncomment main() and do the opposite for class Window
 
-For current state - please, do the following in the description, GUI version with bonus is on the way
+Lunch the code, choose from GUI which option (figure mask or image mask) to paint and see the animated square direction result and then the detailed output of making the route 
