@@ -49,8 +49,8 @@ def application(option):
     image_array = get_img(coord_contours, option)
     image_detailed_routes, route_box = image_area_split(image_array.copy())
 
-    index = 0
-    move(canvas, window,route_box,index)
+    # index = 0
+    # move(canvas, window,route_box,index)
 
     window.mainloop()
 

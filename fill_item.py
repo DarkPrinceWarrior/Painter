@@ -18,17 +18,16 @@ def count_n_plot(im_arr, route,option, plot=True):
         prev_coords = step['x'], step['y']
         # Если в маршруте указан статус 1 точка в текущих координатах закрашивается
         if option == 2:
-            draw.line((prev_coords[1], prev_coords[0], step['y'], step['x']), fill=1)
+            draw.point(xy=(step['y'], step['x']), fill=1)
+            # draw.line((prev_coords[1], prev_coords[0], step['y'], step['x']), fill=1)
         else:
             draw.point(xy=(step['y'], step['x']), fill=1)
-
-
 
 
     sec_arr = np.array(sec_mask)
 
     if plot:
-        fig, axs = plt.subplots(figsize=(12, 9), ncols=3)
+        fig, axs = plt.subplots(figsize=(15, 12), ncols=3)
         axs[0].imshow(im_arr)
         axs[0].set_title('Изначальная маска')
         axs[1].imshow(sec_arr)
